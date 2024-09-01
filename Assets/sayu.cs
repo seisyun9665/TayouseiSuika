@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class sayuu : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -13,6 +14,12 @@ public class sayuu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKey(KeyCode.RightArrow)){
+            transform.Translate(1*Time.deltaTime, 0, 0);
+        }
+        if(Input.GetKey(KeyCode.LeftArrow)){
+            transform.Translate(-1*Time.deltaTime, 0, 0);
+        }
+        if()
     }
 }
