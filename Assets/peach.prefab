@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5277382998246097220}
   - component: {fileID: 5137443232445589186}
   - component: {fileID: 3027670542930508148}
+  - component: {fileID: -5102936966762330435}
   m_Layer: 0
   m_Name: peach
   m_TagString: Untagged
@@ -148,3 +149,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.615
+--- !u!114 &-5102936966762330435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7252571111320169623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e6c46963a9174d6a97a913f090c036a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
