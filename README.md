@@ -66,3 +66,9 @@
 
 
 # Other
+
+## 画像使用
+- 果物
+ - https://dot-illust.net/
+- 人物
+ - https://pictogram2.com/
