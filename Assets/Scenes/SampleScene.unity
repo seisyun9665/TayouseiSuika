@@ -817,6 +817,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cd10f2bccac7384fa8e51edbe8208fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazo:
+  - {fileID: 21300000, guid: 67787695d0c49f84f8cafaeffeb0b306, type: 3}
+  - {fileID: 21300000, guid: ef2364e8913d4e045b0fb8694d3772e1, type: 3}
+  - {fileID: 21300000, guid: 91a56768ff10c304b8b8e0eddc6a4f1b, type: 3}
+  bango: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

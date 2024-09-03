@@ -4,16 +4,25 @@ using UnityEngine;
 
 public class Next : MonoBehaviour
 {
-    pubric Sprite[]
+    public Sprite[] gazo;
+
+    public int bango;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        Change();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void Change()
+    {
+        bango = Random.Range(0, 3);
+        GetComponent<SpriteRenderer>().sprite = gazo[bango];
     }
 }

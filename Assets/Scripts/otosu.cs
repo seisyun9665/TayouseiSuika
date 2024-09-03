@@ -18,7 +18,10 @@ public class otosu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(kudamono[Random.Range(0, 3)], this.transform.position + initialPositionAdj, this.transform.rotation);
+            Instantiate(kudamono[GameObject.Find("Next").GetComponent<Next>().bango],
+            this.transform.position + initialPositionAdj, this.transform.rotation);
+
+            GameObject.Find("Next").GetComponent<Next>().Change();
         }
     }
 }
