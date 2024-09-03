@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class butukaru : MonoBehaviour
 {
+    public GameObject sinka;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,14 @@ public class butukaru : MonoBehaviour
         if (other.gameObject.name == this.gameObject.name)
         {
             Destroy(this.gameObject);
+
+            other.gameObject.GetComponent<butukaru>().sinka = null;
+
+            if (sinka != null)
+            {
+                Instantiate(sinka, this.transform.position, this.transform.rotation);
+            }
+
         }
     }
 }

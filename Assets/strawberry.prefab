@@ -161,3 +161,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e6c46963a9174d6a97a913f090c036a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sinka: {fileID: 1344992833540851037, guid: 39d1f35475f82ef4d8a1b28898c9da9f, type: 3}
