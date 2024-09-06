@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class butukaru : MonoBehaviour
+public class DiversityManager : MonoBehaviour
 {
-    public GameObject sinka;
+    public GameObject nextDiversity;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,11 +23,11 @@ public class butukaru : MonoBehaviour
         {
             Destroy(this.gameObject);
 
-            other.gameObject.GetComponent<butukaru>().sinka = null;
+            other.gameObject.GetComponent<DiversityManager>().nextDiversity = null;
 
-            if (sinka != null)
+            if (nextDiversity != null)
             {
-                Instantiate(sinka, this.transform.position, this.transform.rotation);
+                Instantiate(nextDiversity, this.transform.position, this.transform.rotation);
             }
 
         }
