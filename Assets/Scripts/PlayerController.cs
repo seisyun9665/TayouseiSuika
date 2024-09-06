@@ -8,28 +8,21 @@ public class PlayerController : MonoBehaviour
     [FormerlySerializedAs("Diversity")] public GameObject[] diversity;
     Vector3 _initialPositionAdj = new Vector3(-1.2f, -1.2f, 0f);
 
-    /// <summary>
-    /// プレイヤー移動速度
-    /// </summary>
+    /// <summary>プレイヤー移動速度</summary>
     public float speed = 10;
-    
-    /// <summary>
-    ///  プレイヤーの硬直時間
-    /// </summary>
-    public float initialPauseTime = 0.5f; 
-    private float _nowPauseTime = 0.5f;
-    
-    /// <summary>
-    /// プレイヤーの移動制限
-    /// </summary>
+    /// <summary>プレイヤーの移動制限</summary>
     public float upperLimit = 6;
     public float lowerLimit = 4f;
     private Vector2 _playerPosition;
 
+    /// <summary>ダイバーシティ落下間隔/// </summary>
+    public float DropInterval = 0.7f;
+    private float _nowPauseTime;
+
     // Start is called before the first frame update
     void Start()
     {
-        _nowPauseTime = initialPauseTime;
+        _nowPauseTime = DropInterval;
     }
 
     // Update is called once per frame
@@ -66,7 +59,7 @@ public class PlayerController : MonoBehaviour
     void ClampPosition()
     {
         _playerPosition = transform.position;
-        _playerPosition.x = Mathf.Clamp(_playerPosition.x, -1*lowerLimit, upperLimit);
+        _playerPosition.x = Mathf.Clamp(_playerPosition.x, -1 * lowerLimit, upperLimit);
         transform.position = new Vector2(_playerPosition.x, _playerPosition.y);
     }
 
@@ -81,7 +74,7 @@ public class PlayerController : MonoBehaviour
             {
                 GameManager.Instance.DropDiversity(
                     this.transform.position + _initialPositionAdj);
-                _nowPauseTime = initialPauseTime;
+                _nowPauseTime = DropInterval;
             }
         }
     }

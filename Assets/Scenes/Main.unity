@@ -632,8 +632,6 @@ GameObject:
   m_Component:
   - component: {fileID: 615178461}
   - component: {fileID: 615178460}
-  - component: {fileID: 615178459}
-  - component: {fileID: 615178462}
   - component: {fileID: 615178463}
   m_Layer: 0
   m_Name: Player
@@ -642,18 +640,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &615178459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 615178458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0919798e9d386574382573a68091091e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &615178460
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -721,18 +707,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &615178462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 615178458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cbc09caff6471b4eb7ed5e33c4e253b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &615178463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -972,7 +946,6 @@ GameObject:
   m_Component:
   - component: {fileID: 894055231}
   - component: {fileID: 894055230}
-  - component: {fileID: 894055232}
   m_Layer: 0
   m_Name: Next
   m_TagString: Untagged
@@ -1047,23 +1020,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &894055232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 894055229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cd10f2bccac7384fa8e51edbe8208fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gazo:
-  - {fileID: 21300000, guid: 67787695d0c49f84f8cafaeffeb0b306, type: 3}
-  - {fileID: 21300000, guid: ef2364e8913d4e045b0fb8694d3772e1, type: 3}
-  - {fileID: 21300000, guid: 91a56768ff10c304b8b8e0eddc6a4f1b, type: 3}
-  bango: 0
 --- !u!1 &1206600007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1195,7 +1151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 707664f321b6c40f8a1c388d8ea59ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Diversities:
+  DiversityPrefabs:
   - {fileID: 5803869480525630299, guid: f2b2d97471d9955468bfb41ea5477169, type: 3}
   - {fileID: 954255071431531647, guid: d8a564145d5a6944b995bfff44e5e2f4, type: 3}
   - {fileID: 1344992833540851037, guid: 39d1f35475f82ef4d8a1b28898c9da9f, type: 3}
@@ -1203,7 +1159,8 @@ MonoBehaviour:
   - {fileID: 7252571111320169623, guid: 9783bf9d8b581f9499e01cb59a3a98d9, type: 3}
   - {fileID: 3569148868658015659, guid: 11752fa0ae36cf64bbd24cdf01810bee, type: 3}
   - {fileID: 2976508017046654368, guid: 4c13222821658fa4f866052b31e7b2db, type: 3}
-  - {fileID: 0}
+  NextSpriteRenderer: {fileID: 894055230}
+  DropDiversityRandomRange: 3
   Canvas_Gameover: {fileID: 1775294896}
   _scoreText: {fileID: 313998024}
   score: 0
@@ -1669,6 +1626,6 @@ SceneRoots:
   - {fileID: 894055231}
   - {fileID: 1206600011}
   - {fileID: 1849058177}
-  - {fileID: 1440963592}
   - {fileID: 1572695728}
   - {fileID: 1775294897}
+  - {fileID: 1440963592}
