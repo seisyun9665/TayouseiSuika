@@ -29,7 +29,8 @@ public class GameManager : MonoBehaviour
         score = 0;
         // DropDiversityRandomRangeの不正な値の場合の例外処理
         DropDiversityRandomRange = DropDiversityRandomRange > DiversityPrefabs.Length ? DiversityPrefabs.Length : DropDiversityRandomRange < 1 ? 1 : DropDiversityRandomRange;
-        _NextDiversityIndex = Random.Range(0, DropDiversityRandomRange);
+
+        ChangeNext();
     }
 
     void Update()
@@ -47,6 +48,11 @@ public class GameManager : MonoBehaviour
         Instantiate(DiversityPrefabs[_NextDiversityIndex], dropPosition, Quaternion.identity);
 
         // Nextを決定する
+        ChangeNext();
+    }
+
+    void ChangeNext()
+    {
         _NextDiversityIndex = Random.Range(0, DropDiversityRandomRange);
         NextSpriteRenderer.sprite = DiversityPrefabs[_NextDiversityIndex].GetComponent<SpriteRenderer>().sprite;
     }
