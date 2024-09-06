@@ -1076,7 +1076,6 @@ GameObject:
   - component: {fileID: 1206600010}
   - component: {fileID: 1206600009}
   - component: {fileID: 1206600008}
-  - component: {fileID: 1206600012}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1167,20 +1166,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.0344, y: 0.0173}
   m_SizeDelta: {x: 63.0099, y: 30.972}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1206600012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1206600007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 707664f321b6c40f8a1c388d8ea59ba8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Diversities: []
-  Canvas_Gameover: {fileID: 0}
 --- !u!1 &1440963590
 GameObject:
   m_ObjectHideFlags: 0
@@ -1218,11 +1203,10 @@ MonoBehaviour:
   - {fileID: 7252571111320169623, guid: 9783bf9d8b581f9499e01cb59a3a98d9, type: 3}
   - {fileID: 3569148868658015659, guid: 11752fa0ae36cf64bbd24cdf01810bee, type: 3}
   - {fileID: 2976508017046654368, guid: 4c13222821658fa4f866052b31e7b2db, type: 3}
-
+  - {fileID: 0}
   Canvas_Gameover: {fileID: 1775294896}
   _scoreText: {fileID: 313998024}
   score: 0
-
 --- !u!4 &1440963592
 Transform:
   m_ObjectHideFlags: 0
