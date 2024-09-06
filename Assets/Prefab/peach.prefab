@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 22999930498609998}
   - component: {fileID: 5277382998246097220}
   - component: {fileID: 5137443232445589186}
-  - component: {fileID: 3027670542930508148}
   - component: {fileID: -5102936966762330435}
   - component: {fileID: 3537825872340705900}
   m_Layer: 0
@@ -115,41 +114,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &3027670542930508148
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7252571111320169623}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1.615
 --- !u!114 &-5102936966762330435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextDiversity: {fileID: 3569148868658015659, guid: 11752fa0ae36cf64bbd24cdf01810bee, type: 3}
-  scoring: {fileID: 0}
+  gm: {fileID: 0}
   scoreRatio: 5
 --- !u!60 &3537825872340705900
 PolygonCollider2D:
