@@ -11,11 +11,13 @@ public class PlayerController : MonoBehaviour
     /// プレイヤー移動速度
     /// </summary>
     public float speed = 10;
+    public float intial_pauseTime = 0.5f; 
+    private float now_pauseTime = 0.5f;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        now_pauseTime = intial_pauseTime;
     }
 
     // Update is called once per frame
@@ -23,6 +25,10 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         DropDiversity();
+        if (now_pauseTime > 0)
+        {
+            now_pauseTime -= Time.deltaTime;
+        }
     }
 
     /// <summary>
@@ -47,8 +53,12 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            if (now_pauseTime <= 0)
+            {
             GameManager.Instance.DropDiversity(
                 this.transform.position + initialPositionAdj);
+            now_pauseTime = 0.5f;
+            }
         }
     }
 }
