@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject[] kudamono;
+    public GameObject[] Diversity;
     Vector3 initialPositionAdj = new Vector3(-1.2f, -1.2f, 0f);
 
     /// <summary>
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(kudamono[GameObject.Find("Next").GetComponent<Next>().bango],
+            Instantiate(Diversity[GameObject.Find("Next").GetComponent<Next>().bango],
             this.transform.position + initialPositionAdj, this.transform.rotation);
 
             GameObject.Find("Next").GetComponent<Next>().Change();
