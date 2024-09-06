@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     
     //score関係の変数
-    private TMP_Text _scoreText;
+    public TMP_Text _scoreText;
     public int score;
 
 
@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
         Instance = this;
         
         score = 0;
-        _scoreText = GetComponent<TMP_Text>();
         _scoreText.text = "score : 0";
     }
 
