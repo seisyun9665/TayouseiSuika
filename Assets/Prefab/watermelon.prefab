@@ -162,7 +162,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e6c46963a9174d6a97a913f090c036a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sinka: {fileID: 0}
+  nextDiversity: {fileID: 0}
+  scoring: {fileID: 0}
+  scoreRatio: 7
 --- !u!60 &5115800382199479577
 PolygonCollider2D:
   m_ObjectHideFlags: 0
