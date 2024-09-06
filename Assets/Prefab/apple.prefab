@@ -11,10 +11,8 @@ GameObject:
   - component: {fileID: 188405035381334088}
   - component: {fileID: 5950260200351357556}
   - component: {fileID: 3722319815137062651}
-  - component: {fileID: 4569166243076298782}
-  - component: {fileID: -4330210307322789141}
   - component: {fileID: 2626571805283590038}
-  - component: {fileID: 138397596980386953}
+  - component: {fileID: 2442057147669189223}
   m_Layer: 0
   m_Name: apple
   m_TagString: Untagged
@@ -116,56 +114,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &4569166243076298782
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2777142200138337864}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1.43
---- !u!114 &-4330210307322789141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2777142200138337864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e6c46963a9174d6a97a913f090c036a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextDiversity: {fileID: 7252571111320169623, guid: 9783bf9d8b581f9499e01cb59a3a98d9, type: 3}
-  scoring: {fileID: 0}
-  scoreRatio: 4
 --- !u!60 &2626571805283590038
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -230,7 +178,7 @@ PolygonCollider2D:
       - {x: 1.11, y: -0.90999997}
       - {x: 1.25, y: -0.56}
   m_UseDelaunayMesh: 0
---- !u!114 &138397596980386953
+--- !u!114 &2442057147669189223
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -239,6 +187,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2777142200138337864}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4914df54ea73474f9ab51acdb7facfe, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e6c46963a9174d6a97a913f090c036a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextDiversity: {fileID: 7252571111320169623, guid: 9783bf9d8b581f9499e01cb59a3a98d9, type: 3}
+  gm: {fileID: 0}
+  scoreRatio: 4
