@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     public TMP_Text _scoreText;
     public int score;
 
-
     // Start is called before the first frame update
     void Start()
     {
