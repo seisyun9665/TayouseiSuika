@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void Move()
     {
-
         if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.Translate(1 * Time.deltaTime * speed, 0, 0);
@@ -48,10 +47,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(Diversity[GameObject.Find("Next").GetComponent<Next>().bango],
-            this.transform.position + initialPositionAdj, this.transform.rotation);
-
-            GameObject.Find("Next").GetComponent<Next>().Change();
+            GameManager.Instance.DropDiversity(
+                this.transform.position + initialPositionAdj);
         }
     }
 }
