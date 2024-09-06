@@ -9,10 +9,14 @@ public class GameManager : MonoBehaviour
     public GameObject[] Diversities;
     /// <summary>シングルトンインスタンス</summary>
     public static GameManager Instance { get; private set; }
+
+    /// <summary>ゲームオーバー画面</summary>
+    public Canvas Canvas_Gameover;
     
     //score関係の変数
     public TMP_Text _scoreText;
     public int score;
+
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +44,20 @@ public class GameManager : MonoBehaviour
 
         GameObject.Find("Next").GetComponent<Next>().Change();
     }
+
+
+
+    /// <summary>
+    /// Canvas_Gameoverを開いて、ゲームオーバー画面を表示する。
+    /// </summary>
+    public void GameOver()
+    {
+        Debug.Log("Game Over!");
+
+        // ゲームオーバーの処理
+        Canvas_Gameover.enabled = true;
+        }
+
     
     public void ScoreCountUp(int scoreRatio = 1)
     {
@@ -50,4 +68,5 @@ public class GameManager : MonoBehaviour
     {
         return score;
     }
+    
 }
