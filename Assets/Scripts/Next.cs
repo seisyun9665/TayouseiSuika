@@ -25,4 +25,9 @@ public class Next : MonoBehaviour
         bango = Random.Range(0, 3);
         GetComponent<SpriteRenderer>().sprite = gazo[bango];
     }
+
+    public void ChangeNext(Sprite diversity)
+    {
+
+    }
 }
