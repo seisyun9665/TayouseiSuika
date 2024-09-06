@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
             {
             GameManager.Instance.DropDiversity(
                 this.transform.position + initialPositionAdj);
-            now_pauseTime = 0.5f;
+            now_pauseTime = intial_pauseTime;
             }
         }
     }
