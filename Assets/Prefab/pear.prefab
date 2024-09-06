@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2669252286377359905}
   - component: {fileID: -3321356748205499962}
   - component: {fileID: -2179825288042002592}
+  - component: {fileID: -1438330664534836224}
   m_Layer: 0
   m_Name: pear
   m_TagString: Untagged
@@ -223,3 +224,15 @@ PolygonCollider2D:
       - {x: 1.75, y: -1.1}
       - {x: 1.75, y: 1.09}
   m_UseDelaunayMesh: 0
+--- !u!114 &-1438330664534836224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3569148868658015659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4914df54ea73474f9ab51acdb7facfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
