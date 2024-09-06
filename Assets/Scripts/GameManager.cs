@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,18 +9,26 @@ public class GameManager : MonoBehaviour
     public GameObject[] Diversities;
     /// <summary>シングルトンインスタンス</summary>
     public static GameManager Instance { get; private set; }
+    
+    //score関係の変数
+    private TMP_Text _scoreText;
+    public int score;
 
 
     // Start is called before the first frame update
     void Start()
     {
         Instance = this;
+        
+        score = 0;
+        _scoreText = GetComponent<TMP_Text>();
+        _scoreText.text = "score : 0";
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        _scoreText.text = "score : " + score.ToString();
     }
 
     /// <summary>
@@ -32,5 +41,15 @@ public class GameManager : MonoBehaviour
         dropPosition, Quaternion.identity);
 
         GameObject.Find("Next").GetComponent<Next>().Change();
+    }
+    
+    public void ScoreCountUp(int scoreRatio = 1)
+    {
+        score = score + 10 * scoreRatio * scoreRatio;
+    }
+
+    public int GetScore()
+    {
+        return score;
     }
 }
