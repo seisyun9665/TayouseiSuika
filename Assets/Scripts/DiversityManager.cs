@@ -4,16 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class DiversityManager : MonoBehaviour
+public class Diversity : MonoBehaviour
 {
     public GameObject nextDiversity;
-    public GameManager gm;
 
     public int scoreRatio;
     // Start is called before the first frame update
     void Start()
     {
-        gm = MonoBehaviour.FindObjectOfType<GameManager>();
+
     }
 
     // Update is called once per frame
@@ -29,21 +28,18 @@ public class DiversityManager : MonoBehaviour
         {
             Destroy(this.gameObject);
 
-            other.gameObject.GetComponent<DiversityManager>().nextDiversity = null;
+            other.gameObject.GetComponent<Diversity>().nextDiversity = null;
 
             if (nextDiversity != null)
             {
-                Debug.Log(this.gameObject.name);
-                gm.ScoreCountUp(scoreRatio);
+                GameManager.Instance.ScoreCountUp(scoreRatio);
                 Instantiate(nextDiversity, this.transform.position, this.transform.rotation);
             }
-
         }
 
         // ゲームオーバーを判定する。
         if (other.gameObject.name == "Line")//衝突したオブジェクト名がLineかどうかを確認
         {
-            Destroy(this.gameObject);
             GameManager.Instance.GameOver(); // ゲームオーバー処理
         }
     }

@@ -127,7 +127,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextDiversity: {fileID: 3569148868658015659, guid: 11752fa0ae36cf64bbd24cdf01810bee, type: 3}
-  gm: {fileID: 0}
   scoreRatio: 5
 --- !u!60 &3537825872340705900
 PolygonCollider2D:
