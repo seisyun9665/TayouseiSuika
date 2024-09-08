@@ -80,6 +80,9 @@ public class MainManager : MonoBehaviour
         _IsPlaying = false;
         Time.timeScale = 0f;
 
+        // スコア保存処理
+        ScoreManager.Instance.Score = _Score;
+
         // ゲームオーバーの処理
         Canvas_Gameover.SetActive(true);
     }
