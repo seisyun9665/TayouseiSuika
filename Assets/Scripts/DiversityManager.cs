@@ -32,7 +32,7 @@ public class Diversity : MonoBehaviour
 
             if (nextDiversity != null)
             {
-                GameManager.Instance.ScoreCountUp(scoreRatio);
+                MainManager.Instance.ScoreCountUp(scoreRatio);
                 Instantiate(nextDiversity, this.transform.position, this.transform.rotation);
             }
         }
@@ -40,7 +40,7 @@ public class Diversity : MonoBehaviour
         // ゲームオーバーを判定する。
         if (other.gameObject.name == "Line")//衝突したオブジェクト名がLineかどうかを確認
         {
-            GameManager.Instance.GameOver(); // ゲームオーバー処理
+            MainManager.Instance.GameOver(); // ゲームオーバー処理
         }
     }
 }

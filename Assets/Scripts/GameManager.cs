@@ -1,41 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class MainManager : MonoBehaviour
 {
     /// <summary>シングルトンインスタンス</summary>
-    public static GameManager Instance { get; private set; }
-    /// <summary>全ダイバーシティ</summary>
+    public static MainManager Instance { get; private set; }
+
+    /// <summary>全種類のダイバーシティ</summary>
     public GameObject[] DiversityPrefabs;
+
     /// <summary>ネクスト表示用SpriteRenderer</summary>
     public SpriteRenderer NextSpriteRenderer;
+    /// <summary>スコア表示用テキスト</summary>
+    public TMP_Text ScoreText;
+    /// <summary>ゲームオーバー画面</summary>
+    public GameObject Canvas_Gameover;
+
+    /// <summary>プレイ中状態</summary>
+    private bool _IsPlaying;
     /// <summary>Nextに表示するダイバーシティ</summary>
     private int _NextDiversityIndex;
+    /// <summary>スコア</summary>
+    private int _Score;
+
     /// <summary>落下させられるダイバーシティの種類数</summary>
     public int DropDiversityRandomRange = 3;
-
-    /// <summary>ゲームオーバー画面</summary>
-    public Canvas Canvas_Gameover;
-
-    //score関係の変数
-    public TMP_Text _scoreText;
-    public int score;
+    /// <summary>デバックモード</summary>
+    public bool IsDebug = false;
 
     void Start()
     {
         Instance = this;
-        score = 0;
+        _Score = 0;
         // DropDiversityRandomRangeの不正な値の場合の例外処理
         DropDiversityRandomRange = DropDiversityRandomRange > DiversityPrefabs.Length ? DiversityPrefabs.Length : DropDiversityRandomRange < 1 ? 1 : DropDiversityRandomRange;
+        Canvas_Gameover.SetActive(false);
+        _IsPlaying = true;
+        Time.timeScale = 1.0f;
+        ScoreText.text = "score : " + _Score.ToString();
 
         ChangeNext();
     }
 
     void Update()
     {
-        _scoreText.text = "score : " + score.ToString();
+        OnQDown();
     }
 
     /// <summary>
@@ -44,6 +56,8 @@ public class GameManager : MonoBehaviour
     /// <param name="dropPosition">落下の場所</param>
     public void DropDiversity(Vector3 dropPosition)
     {
+        if (!_IsPlaying) return;
+
         // 多様性をランダムに選択して落とす
         Instantiate(DiversityPrefabs[_NextDiversityIndex], dropPosition, Quaternion.identity);
 
@@ -62,21 +76,33 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void GameOver()
     {
-        Debug.Log("Game Over!");
+        // ゲーム停止処理
+        _IsPlaying = false;
+        Time.timeScale = 0f;
 
         // ゲームオーバーの処理
-        Canvas_Gameover.enabled = true;
+        Canvas_Gameover.SetActive(true);
     }
 
 
+    /// <summary>
+    /// スコアを加算する
+    /// </summary>
+    /// <param name="scoreRatio">2条分スコア加算</param>
     public void ScoreCountUp(int scoreRatio = 1)
     {
-        score = score + 10 * scoreRatio * scoreRatio;
+        if (!_IsPlaying) return;
+
+        _Score += 10 * scoreRatio * scoreRatio;
+        ScoreText.text = "score : " + _Score.ToString();
     }
 
-    public int GetScore()
+    private void OnQDown()
     {
-        return score;
+        if (!IsDebug) return;
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            GameOver();
+        }
     }
-
 }
