@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
         {
             if (_nowPauseTime <= 0)
             {
-                GameManager.Instance.DropDiversity(
+                MainManager.Instance.DropDiversity(
                     this.transform.position + _initialPositionAdj);
                 _nowPauseTime = DropInterval;
             }
