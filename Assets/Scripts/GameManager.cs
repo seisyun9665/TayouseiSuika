@@ -30,6 +30,8 @@ public class MainManager : MonoBehaviour
     public int DropDiversityRandomRange = 3;
     /// <summary>デバックモード</summary>
     public bool IsDebug = false;
+    /// <summary>ダイバーシティの大きさ</summary>
+    public float DiversitySize = 1;
 
     void Start()
     {
@@ -59,11 +61,12 @@ public class MainManager : MonoBehaviour
         if (!_IsPlaying) return;
 
         // 多様性をランダムに選択して落とす
-        Instantiate(DiversityPrefabs[_NextDiversityIndex], dropPosition, Quaternion.identity);
-
+        GameObject diversity = Instantiate(DiversityPrefabs[_NextDiversityIndex], dropPosition, Quaternion.identity);
+        diversity.transform.localScale = new Vector3(DiversitySize, DiversitySize, DiversitySize);
         // Nextを決定する
         ChangeNext();
     }
+
 
     void ChangeNext()
     {
