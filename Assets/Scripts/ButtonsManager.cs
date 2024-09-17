@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,5 +22,27 @@ public class ButtonsManager : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    /// <summary>
+    /// 今いるキャンバスを無効化して、別のキャンバスを有効化する
+    /// </summary>
+    public static void ChangeCanvas(string CanvasName)
+    {
+        // ボタンが所属しているキャンバスを無効化
+        GameObject currentCanvas = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.transform.root.gameObject;
+        currentCanvas.GetComponent<Canvas>().enabled = false;
+
+        // 指定されたキャンバスを有効化
+        GameObject targetCanvas = GameObject.Find(CanvasName);
+
+        if (targetCanvas != null)
+        {
+            targetCanvas.GetComponent<Canvas>().enabled = true;
+        }
+        else
+        {
+            Debug.LogError("Canvas with name " + CanvasName + " not found!");
+        }
     }
 }
