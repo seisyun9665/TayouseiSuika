@@ -72,3 +72,6 @@
  - https://dot-illust.net/
 - 人物
  - https://pictogram2.com/
+
+## サウンド
+- https://otologic.jp/free/license.html
