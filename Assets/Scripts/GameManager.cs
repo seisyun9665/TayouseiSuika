@@ -65,6 +65,9 @@ public class MainManager : MonoBehaviour
         diversity.transform.localScale = new Vector3(DiversitySize, DiversitySize, DiversitySize);
         // Nextを決定する
         ChangeNext();
+
+        // 効果音
+        AudioManager.Instance.PlaySFX("Drop");
     }
 
 
@@ -79,6 +82,9 @@ public class MainManager : MonoBehaviour
     /// </summary>
     public void GameOver()
     {
+        // 効果音
+        AudioManager.Instance.PlaySFX("GameOver");
+
         // ゲーム停止処理
         _IsPlaying = false;
         Time.timeScale = 0f;
@@ -97,6 +103,9 @@ public class MainManager : MonoBehaviour
     /// <param name="scoreRatio">2条分スコア加算</param>
     public void ScoreCountUp(int scoreRatio = 1)
     {
+        // 効果音
+        AudioManager.Instance.PlaySFX("Collision");
+
         if (!_IsPlaying) return;
 
         _Score += 10 * scoreRatio * scoreRatio;

@@ -12,11 +12,17 @@ public class ButtonsManager : MonoBehaviour
     /// <param name="SceneName">シーン名</param>
     public static void LoadScene(string SceneName)
     {
+        // 効果音
+        AudioManager.Instance.PlaySFX("Button");
+
         SceneManager.LoadScene(SceneName);
     }
 
     public static void QuitGame()
     {
+        // 効果音
+        AudioManager.Instance.PlaySFX("Button");
+
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false; // ゲームプレイ終了
 #else
@@ -29,6 +35,9 @@ public class ButtonsManager : MonoBehaviour
     /// </summary>
     public static void ChangeCanvas(string CanvasName)
     {
+        // 効果音
+        AudioManager.Instance.PlaySFX("Button");
+
         // ボタンが所属しているキャンバスを無効化
         GameObject currentCanvas = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.transform.root.gameObject;
         currentCanvas.GetComponent<Canvas>().enabled = false;
