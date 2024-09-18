@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     public float DropInterval = 0.7f;
     private float _nowPauseTime;
 
+    public bool UseMouse = true;
+    private bool _MouseIsDownBeforeFrame = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,20 +45,35 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void Move()
     {
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (!UseMouse)
         {
-            transform.Translate(1 * Time.deltaTime * speed, 0, 0);
+            // キーボード操作
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                transform.Translate(1 * Time.deltaTime * speed, 0, 0);
+            }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                transform.Translate(-1 * Time.deltaTime * speed, 0, 0);
+            }
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+
+        else
         {
-            transform.Translate(-1 * Time.deltaTime * speed, 0, 0);
+            // マウス操作
+            if (Input.GetMouseButton(0))
+            {
+                // マウスを押している間、マウスの座標にプレイヤーを合わせる
+                transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, transform.position.y, transform.position.z);
+                _MouseIsDownBeforeFrame = true;
+            }
         }
+
     }
 
     /// <summary>
     /// 位置監視と制限
     /// </summary>
-
     void ClampPosition()
     {
         _playerPosition = transform.position;
@@ -68,13 +86,36 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void DropDiversity()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!UseMouse)
         {
-            if (_nowPauseTime <= 0)
+            // キーボード操作
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                MainManager.Instance.DropDiversity(
-                    this.transform.position + _initialPositionAdj);
-                _nowPauseTime = DropInterval;
+                if (_nowPauseTime <= 0)
+                {
+                    MainManager.Instance.DropDiversity(
+                        this.transform.position + _initialPositionAdj);
+                    _nowPauseTime = DropInterval;
+                }
+
+            }
+        }
+
+        else
+        {
+            // マウス操作
+            if (_MouseIsDownBeforeFrame)
+            {
+                if (!Input.GetMouseButton(0))
+                {
+                    _MouseIsDownBeforeFrame = false;
+                    if (_nowPauseTime <= 0)
+                    {
+                        MainManager.Instance.DropDiversity(
+                            this.transform.position + _initialPositionAdj);
+                        _nowPauseTime = DropInterval;
+                    }
+                }
             }
         }
     }
