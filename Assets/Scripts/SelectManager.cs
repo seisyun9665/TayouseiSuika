@@ -11,40 +11,36 @@ public class SelectManager : MonoBehaviour
     /// <summary>選択中アセット表示用イメージ</summary>
     public Image SelectedDiversityImage;
 
+    private int _diversitySetIndex;
+
     void Start()
     {
+        // さっきまで選択していたセットを読み込む
+        _diversitySetIndex = ScoreManager.Instance.DiversitySet;
         // 選択中のダイバーシティーセットの画像に差し替え
-        SelectedDiversityImage.sprite = DiversityAssets[ScoreManager.Instance.DiversitySet];
+        SelectedDiversityImage.sprite = DiversityAssets[_diversitySetIndex];
     }
 
     public void NextSet()
     {
-        int _diversitySetIndex = ScoreManager.Instance.DiversitySet;
         _diversitySetIndex++;
         if (_diversitySetIndex >= DiversityAssets.Length)
         {
             _diversitySetIndex = 0;
         }
-
         // 選択中のダイバーシティーセットの画像に差し替え
-        SelectedDiversityImage.sprite = DiversityAssets[ScoreManager.Instance.DiversitySet];
-
-        ScoreManager.Instance.DiversitySet = _diversitySetIndex;
+        SelectedDiversityImage.sprite = DiversityAssets[_diversitySetIndex];
     }
 
     public void PreviousSet()
     {
-        int _diversitySetIndex = ScoreManager.Instance.DiversitySet;
         _diversitySetIndex--;
         if (_diversitySetIndex < 0)
         {
             _diversitySetIndex = DiversityAssets.Length - 1;
         }
-
         // 選択中のダイバーシティーセットの画像に差し替え
-        SelectedDiversityImage.sprite = DiversityAssets[ScoreManager.Instance.DiversitySet];
-
-        ScoreManager.Instance.DiversitySet = _diversitySetIndex;
+        SelectedDiversityImage.sprite = DiversityAssets[_diversitySetIndex];
     }
 
 }
