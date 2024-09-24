@@ -54,4 +54,15 @@ public class ButtonsManager : MonoBehaviour
             Debug.LogError("Canvas with name " + CanvasName + " not found!");
         }
     }
+
+    /// <summary>
+    /// 使用するダイバーシティセットを変更する
+    /// </summary>
+    /// <param name="setNumber">ダイバーシティセットの番号</param>
+    public static void ChangeDiversitySet(int setNumber)
+    {
+        ScoreManager.Instance.DiversitySet = setNumber;
+    }
+
+
 }
