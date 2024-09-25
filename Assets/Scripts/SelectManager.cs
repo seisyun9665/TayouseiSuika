@@ -30,6 +30,8 @@ public class SelectManager : MonoBehaviour
         }
         // 選択中のダイバーシティーセットの画像に差し替え
         SelectedDiversityImage.sprite = DiversityAssets[_diversitySetIndex];
+
+        ScoreManager.Instance.DiversitySet = _diversitySetIndex;
     }
 
     public void PreviousSet()
@@ -41,6 +43,8 @@ public class SelectManager : MonoBehaviour
         }
         // 選択中のダイバーシティーセットの画像に差し替え
         SelectedDiversityImage.sprite = DiversityAssets[_diversitySetIndex];
+
+        ScoreManager.Instance.DiversitySet = _diversitySetIndex;
     }
 
 }

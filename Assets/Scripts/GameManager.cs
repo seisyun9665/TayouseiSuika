@@ -9,8 +9,13 @@ public class MainManager : MonoBehaviour
     /// <summary>シングルトンインスタンス</summary>
     public static MainManager Instance { get; private set; }
 
-    /// <summary>全種類のダイバーシティ</summary>
-    public GameObject[] DiversityPrefabs;
+    /// <summary>ダイバーシティセットのリスト</summary>
+    public GameObject[] DiversitySetList;
+    /// <summary>使用するダイバーシティ</summary>
+    private GameObject[] _diversityObjects;
+    /// <summary>使用するダイバーシティセットの番号</summary>
+    public int DiversitySetIndex = 0;
+
 
     /// <summary>ネクスト表示用SpriteRenderer</summary>
     public SpriteRenderer NextSpriteRenderer;
@@ -26,6 +31,7 @@ public class MainManager : MonoBehaviour
     /// <summary>スコア</summary>
     private int _Score;
 
+
     /// <summary>落下させられるダイバーシティの種類数</summary>
     public int DropDiversityRandomRange = 3;
     /// <summary>デバックモード</summary>
@@ -37,13 +43,23 @@ public class MainManager : MonoBehaviour
     {
         Instance = this;
         _Score = 0;
+
+        // 使用するダイバーシティを設定
+        _diversityObjects = DiversitySetList[DiversitySetIndex].GetComponent<DiversitySet>().DiversitieObjects;
+
         // DropDiversityRandomRangeの不正な値の場合の例外処理
-        DropDiversityRandomRange = DropDiversityRandomRange > DiversityPrefabs.Length ? DiversityPrefabs.Length : DropDiversityRandomRange < 1 ? 1 : DropDiversityRandomRange;
+        DropDiversityRandomRange = DropDiversityRandomRange > _diversityObjects.Length ? _diversityObjects.Length : DropDiversityRandomRange < 1 ? 1 : DropDiversityRandomRange;
+
+        // ゲームオーバー画面を隠す
         Canvas_Gameover.SetActive(false);
+        // プレイ中状態設定
         _IsPlaying = true;
+        // 時間を流す
         Time.timeScale = 1.0f;
+        // スコアをゼロに設定
         ScoreText.text = "score : " + _Score.ToString();
 
+        // 次に落とすダイバーシティを決定
         ChangeNext();
     }
 
@@ -61,7 +77,7 @@ public class MainManager : MonoBehaviour
         if (!_IsPlaying) return;
 
         // 多様性をランダムに選択して落とす
-        GameObject diversity = Instantiate(DiversityPrefabs[_NextDiversityIndex], dropPosition, Quaternion.identity);
+        GameObject diversity = Instantiate(_diversityObjects[_NextDiversityIndex], dropPosition, Quaternion.identity);
         diversity.transform.localScale = new Vector3(DiversitySize, DiversitySize, DiversitySize);
         // Nextを決定する
         ChangeNext();
@@ -74,7 +90,7 @@ public class MainManager : MonoBehaviour
     void ChangeNext()
     {
         _NextDiversityIndex = Random.Range(0, DropDiversityRandomRange);
-        NextSpriteRenderer.sprite = DiversityPrefabs[_NextDiversityIndex].GetComponent<SpriteRenderer>().sprite;
+        NextSpriteRenderer.sprite = _diversityObjects[_NextDiversityIndex].GetComponent<SpriteRenderer>().sprite;
     }
 
     /// <summary>
