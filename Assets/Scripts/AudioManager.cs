@@ -23,14 +23,13 @@ public class AudioManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(this.gameObject);
+            // BGM再生
+            PlayMusic("Theme");
         }
         else
         {
             Destroy(this.gameObject);
         }
-
-        // BGM再生
-        PlayMusic("Theme");
     }
 
 
@@ -81,6 +80,7 @@ public class AudioManager : MonoBehaviour
     /// <param name="name">効果音名</param>
     public void PlaySFX(string name)
     {
+
         Sound s = Array.Find(sfxSounds, x => x.name == name);
 
         if (s == null)

@@ -28,6 +28,13 @@ public class ScoreManager : MonoBehaviour
         get { return score; }
         set { score = value; }
     }
+    /// <summary>インゲームで選択されているダイバーシティセット</summary>
+    private int diversitySet = 0;
+    public int DiversitySet
+    {
+        get { return diversitySet; }
+        set { diversitySet = value; }
+    }
 
     private void Awake()
     {
@@ -35,6 +42,7 @@ public class ScoreManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(this.gameObject);
+            diversitySet = 0;
         }
         else
         {
