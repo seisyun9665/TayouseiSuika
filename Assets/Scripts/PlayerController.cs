@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
-    [FormerlySerializedAs("Diversity")] public GameObject[] diversity;
+    /// <summary>プレイヤー初期位置</summary>
     Vector3 _initialPositionAdj = new Vector3(-1.2f, -1.2f, 0f);
 
     /// <summary>プレイヤー移動速度</summary>
@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public float DropInterval = 0.7f;
     private float _nowPauseTime;
 
+    /// <summary>マウス操作 OR　キーボード操作</summary>
     public bool UseMouse = true;
     private bool _MouseIsDownBeforeFrame = false;
 
