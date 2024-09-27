@@ -14,8 +14,7 @@ public class MainManager : MonoBehaviour
     /// <summary>使用するダイバーシティ</summary>
     private GameObject[] _diversityObjects;
     /// <summary>使用するダイバーシティセットの番号</summary>
-    public int DiversitySetIndex = 0;
-
+    private int DiversitySetIndex = 0;
 
     /// <summary>ネクスト表示用SpriteRenderer</summary>
     public SpriteRenderer NextSpriteRenderer;
@@ -45,6 +44,7 @@ public class MainManager : MonoBehaviour
         _Score = 0;
 
         // 使用するダイバーシティを設定
+        DiversitySetIndex = ScoreManager.Instance.DiversitySet;
         _diversityObjects = DiversitySetList[DiversitySetIndex].GetComponent<DiversitySet>().DiversityObjects;
 
         // DropDiversityRandomRangeの不正な値の場合の例外処理

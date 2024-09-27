@@ -8,4 +8,6 @@ public class DiversitySet : MonoBehaviour
     public string DiversitySetName;
     /// <summary>セットに含まれるダイバーシティ</summary>
     public GameObject[] DiversityObjects;
+    /// <summary>Select画面表示イメージ</summary>
+    public Sprite SetImage;
 }
