@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,10 +12,10 @@ public class MainManager : MonoBehaviour
 
     /// <summary>ダイバーシティセットのリスト</summary>
     public GameObject[] DiversitySetList;
-    /// <summary>使用するダイバーシティ</summary>
+    /// <summary>使用するダイバーシティのリスト</summary>
     private GameObject[] _diversityObjects;
     /// <summary>使用するダイバーシティセットの番号</summary>
-    private int DiversitySetIndex = 0;
+    private int _diversitySetIndex = 0;
 
     /// <summary>ネクスト表示用SpriteRenderer</summary>
     public SpriteRenderer NextSpriteRenderer;
@@ -36,7 +37,7 @@ public class MainManager : MonoBehaviour
     /// <summary>デバックモード</summary>
     public bool IsDebug = false;
     /// <summary>ダイバーシティの大きさ</summary>
-    public float DiversitySize = 1;
+    public float DiversityScale { get; private set; } = 1.0f;
 
     void Start()
     {
@@ -44,8 +45,8 @@ public class MainManager : MonoBehaviour
         _Score = 0;
 
         // 使用するダイバーシティを設定
-        DiversitySetIndex = ScoreManager.Instance.DiversitySet;
-        _diversityObjects = DiversitySetList[DiversitySetIndex].GetComponent<DiversitySet>().DiversityObjects;
+        _diversitySetIndex = ScoreManager.Instance.DiversitySet;
+        _diversityObjects = DiversitySetList[_diversitySetIndex].GetComponent<DiversitySet>().DiversityObjects;
 
         // DropDiversityRandomRangeの不正な値の場合の例外処理
         DropDiversityRandomRange = DropDiversityRandomRange > _diversityObjects.Length ? _diversityObjects.Length : DropDiversityRandomRange < 1 ? 1 : DropDiversityRandomRange;
@@ -58,6 +59,9 @@ public class MainManager : MonoBehaviour
         Time.timeScale = 1.0f;
         // スコアをゼロに設定
         ScoreText.text = "score : " + _Score.ToString();
+
+        // ダイバーシティのサイズを決定
+        DiversityScale = DiversitySetList[_diversitySetIndex].GetComponent<DiversitySet>().DiversityScale;
 
         // 次に落とすダイバーシティを決定
         ChangeNext();
@@ -78,7 +82,8 @@ public class MainManager : MonoBehaviour
 
         // 多様性をランダムに選択して落とす
         GameObject diversity = Instantiate(_diversityObjects[_NextDiversityIndex], dropPosition, Quaternion.identity);
-        diversity.transform.localScale = new Vector3(DiversitySize, DiversitySize, DiversitySize);
+        diversity.transform.localScale = new Vector3(DiversityScale, DiversityScale, DiversityScale);
+
         // Nextを決定する
         ChangeNext();
 

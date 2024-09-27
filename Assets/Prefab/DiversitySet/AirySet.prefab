@@ -54,3 +54,4 @@ MonoBehaviour:
   - {fileID: 3569148868658015659, guid: 9d3b9236d8e1a46d1a5a63f9cc542f80, type: 3}
   - {fileID: 2976508017046654368, guid: e713692fe564543b2971f92e0047aa55, type: 3}
   SetImage: {fileID: 21300000, guid: e715733d5b152456283dbfeba5551596, type: 3}
+  DiversityScale: 1.2

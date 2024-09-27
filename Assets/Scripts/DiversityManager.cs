@@ -34,7 +34,7 @@ public class Diversity : MonoBehaviour
             {
                 MainManager.Instance.ScoreCountUp(scoreRatio);
                 GameObject gameObject = Instantiate(nextDiversity, this.transform.position, this.transform.rotation);
-                gameObject.transform.localScale = new Vector3(MainManager.Instance.DiversitySize, MainManager.Instance.DiversitySize, MainManager.Instance.DiversitySize);
+                gameObject.transform.localScale = new Vector3(MainManager.Instance.DiversityScale, MainManager.Instance.DiversityScale, MainManager.Instance.DiversityScale);
             }
         }
 
