@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Serialization;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MainManager : MonoBehaviour
@@ -10,12 +6,8 @@ public class MainManager : MonoBehaviour
     /// <summary>シングルトンインスタンス</summary>
     public static MainManager Instance { get; private set; }
 
-    /// <summary>ダイバーシティセットのリスト</summary>
-    public GameObject[] DiversitySetList;
-    /// <summary>使用するダイバーシティのリスト</summary>
-    private GameObject[] _diversityObjects;
-    /// <summary>使用するダイバーシティセットの番号</summary>
-    private int _diversitySetIndex = 0;
+    /// <summary>使用するダイバーシティセット</summary>
+    private DiversitySet _diversitySet;
 
     /// <summary>ネクスト表示用SpriteRenderer</summary>
     public SpriteRenderer NextSpriteRenderer;
@@ -45,11 +37,10 @@ public class MainManager : MonoBehaviour
         _Score = 0;
 
         // 使用するダイバーシティを設定
-        _diversitySetIndex = ScoreManager.Instance.DiversitySet;
-        _diversityObjects = DiversitySetList[_diversitySetIndex].GetComponent<DiversitySet>().DiversityObjects;
+        _diversitySet = DiversityManager.Instance.SelectedDiversitySet;
 
         // DropDiversityRandomRangeの不正な値の場合の例外処理
-        DropDiversityRandomRange = DropDiversityRandomRange > _diversityObjects.Length ? _diversityObjects.Length : DropDiversityRandomRange < 1 ? 1 : DropDiversityRandomRange;
+        DropDiversityRandomRange = DropDiversityRandomRange > _diversitySet.DiversityObjects.Length ? _diversitySet.DiversityObjects.Length : DropDiversityRandomRange < 1 ? 1 : DropDiversityRandomRange;
 
         // ゲームオーバー画面を隠す
         Canvas_Gameover.SetActive(false);
@@ -61,7 +52,7 @@ public class MainManager : MonoBehaviour
         ScoreText.text = "score : " + _Score.ToString();
 
         // ダイバーシティのサイズを決定
-        DiversityScale = DiversitySetList[_diversitySetIndex].GetComponent<DiversitySet>().DiversityScale;
+        DiversityScale = _diversitySet.DiversityScale;
 
         // 次に落とすダイバーシティを決定
         ChangeNext();
@@ -81,7 +72,7 @@ public class MainManager : MonoBehaviour
         if (!_IsPlaying) return;
 
         // 多様性をランダムに選択して落とす
-        GameObject diversity = Instantiate(_diversityObjects[_NextDiversityIndex], dropPosition, Quaternion.identity);
+        GameObject diversity = Instantiate(_diversitySet.DiversityObjects[_NextDiversityIndex], dropPosition, Quaternion.identity);
         diversity.transform.localScale = new Vector3(DiversityScale, DiversityScale, DiversityScale);
 
         // Nextを決定する
@@ -95,7 +86,7 @@ public class MainManager : MonoBehaviour
     void ChangeNext()
     {
         _NextDiversityIndex = Random.Range(0, DropDiversityRandomRange);
-        NextSpriteRenderer.sprite = _diversityObjects[_NextDiversityIndex].GetComponent<SpriteRenderer>().sprite;
+        NextSpriteRenderer.sprite = _diversitySet.DiversityObjects[_NextDiversityIndex].GetComponent<SpriteRenderer>().sprite;
     }
 
     /// <summary>

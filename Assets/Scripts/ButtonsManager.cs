@@ -61,7 +61,7 @@ public class ButtonsManager : MonoBehaviour
     /// <param name="setNumber">ダイバーシティセットの番号</param>
     public static void ChangeDiversitySet(int setNumber)
     {
-        ScoreManager.Instance.DiversitySet = setNumber;
+        DiversityManager.Instance.DiversitySetIndex = setNumber;
     }
 
 

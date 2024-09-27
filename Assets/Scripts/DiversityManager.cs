@@ -1,47 +1,67 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
 
-public class Diversity : MonoBehaviour
+// ダイバーシティセットの選択・非選択をゲーム全体で管理するスクリプト
+// DiversitySetIndexで、使用するダイバーシティセットを選択してから、SelectedDiversitySetObjectsで本体を取り出す
+public class DiversityManager : MonoBehaviour
 {
-    public GameObject nextDiversity;
-
-    public int scoreRatio;
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>ダイバーシティセットのリスト</summary>
+    public GameObject[] DiversitySetList;
+    /// <summary>使用するダイバーシティのリスト</summary>
+    public DiversitySet SelectedDiversitySet
     {
-
+        get { return DiversitySetList[_diversitySetIndex].GetComponent<DiversitySet>(); }
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>インゲームで選択されているダイバーシティセットの番号</summary>
+    private int _diversitySetIndex = 0;
+    public int DiversitySetIndex
     {
-
+        get { return _diversitySetIndex; }
+        set { _diversitySetIndex = value; }
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    /// <summary>シングルトンインスタンス</summary>
+    private static DiversityManager instance;
+    public static DiversityManager Instance
     {
-        //衝突して、Diversityが次のDiversityに進化する処理
-        if (other.gameObject.name == this.gameObject.name)
+        get
+        {
+            if (instance == null)
+            {
+                SetupInstance();
+            }
+            return instance;
+        }
+    }
+
+    private void Awake()
+    {
+        if (!instance)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+            _diversitySetIndex = 0;
+        }
+        else
         {
             Destroy(this.gameObject);
-
-            other.gameObject.GetComponent<Diversity>().nextDiversity = null;
-
-            if (nextDiversity != null)
-            {
-                MainManager.Instance.ScoreCountUp(scoreRatio);
-                GameObject gameObject = Instantiate(nextDiversity, this.transform.position, this.transform.rotation);
-                gameObject.transform.localScale = new Vector3(MainManager.Instance.DiversityScale, MainManager.Instance.DiversityScale, MainManager.Instance.DiversityScale);
-            }
-        }
-
-        // ゲームオーバーを判定する。
-        if (other.gameObject.name == "Line")//衝突したオブジェクト名がLineかどうかを確認
-        {
-            MainManager.Instance.GameOver(); // ゲームオーバー処理
         }
     }
+
+    private static void SetupInstance()
+    {
+        instance = FindObjectOfType<DiversityManager>();
+
+        if (instance == null)
+        {
+            GameObject gameObj = new GameObject();
+            gameObj.name = "DiversityManager";
+            instance = gameObj.AddComponent<DiversityManager>();
+            DontDestroyOnLoad(gameObj);
+        }
+    }
+
+
 }
