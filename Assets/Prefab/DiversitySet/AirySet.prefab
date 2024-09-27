@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DiversitySetName: Fruits
-  DiversitieObjects:
+  DiversityObjects:
   - {fileID: 5803869480525630299, guid: 766e13e549a3446f0a9d75c735ca4a4b, type: 3}
   - {fileID: 954255071431531647, guid: 16b9f4d05b71641aa9dc26d8f24e6372, type: 3}
   - {fileID: 1344992833540851037, guid: 2c5fe7cc3ca384b11ad5e82da1877c24, type: 3}

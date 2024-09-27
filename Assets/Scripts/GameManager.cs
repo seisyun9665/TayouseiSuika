@@ -45,7 +45,7 @@ public class MainManager : MonoBehaviour
         _Score = 0;
 
         // 使用するダイバーシティを設定
-        _diversityObjects = DiversitySetList[DiversitySetIndex].GetComponent<DiversitySet>().DiversitieObjects;
+        _diversityObjects = DiversitySetList[DiversitySetIndex].GetComponent<DiversitySet>().DiversityObjects;
 
         // DropDiversityRandomRangeの不正な値の場合の例外処理
         DropDiversityRandomRange = DropDiversityRandomRange > _diversityObjects.Length ? _diversityObjects.Length : DropDiversityRandomRange < 1 ? 1 : DropDiversityRandomRange;
