@@ -72,6 +72,8 @@
  - https://dot-illust.net/
 - 人物
  - https://pictogram2.com/
-
+- 動物
+  - https://www.osaka-eco.ac.jp/environment/materials.html
+  - https://www.photo-ac.com/
 ## サウンド
 - https://otologic.jp/free/license.html

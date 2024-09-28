@@ -5,7 +5,6 @@ public class MainManager : MonoBehaviour
 {
     /// <summary>シングルトンインスタンス</summary>
     public static MainManager Instance { get; private set; }
-
     /// <summary>使用するダイバーシティセット</summary>
     private DiversitySet _diversitySet;
 
@@ -22,7 +21,6 @@ public class MainManager : MonoBehaviour
     private int _NextDiversityIndex;
     /// <summary>スコア</summary>
     private int _Score;
-
 
     /// <summary>落下させられるダイバーシティの種類数</summary>
     public int DropDiversityRandomRange = 3;

@@ -1441,7 +1441,7 @@ MonoBehaviour:
   ScoreText: {fileID: 313998024}
   Canvas_Gameover: {fileID: 1775294893}
   DropDiversityRandomRange: 3
-  IsDebug: 1
+  IsDebug: 0
 --- !u!4 &1440963592
 Transform:
   m_ObjectHideFlags: 0
