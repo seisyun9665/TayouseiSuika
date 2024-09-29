@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 // ダイバーシティセットの選択・非選択をゲーム全体で管理するスクリプト

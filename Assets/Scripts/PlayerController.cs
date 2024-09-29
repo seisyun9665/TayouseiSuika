@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     /// <summary>ダイバーシティ落下間隔/// </summary>
     public float DropInterval = 0.7f;
     private float _nowPauseTime;
+    /// <summary>テトリスモードの時の落下間隔</summary>
+    public float TetrisDropInterval = 1.5f;
+    private float _tetorisNowPauseTime;
 
     /// <summary>マウス操作 OR　キーボード操作</summary>
     public bool UseMouse = true;
@@ -27,6 +30,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _nowPauseTime = DropInterval;
+        _tetorisNowPauseTime = TetrisDropInterval;
     }
 
     // Update is called once per frame
@@ -87,7 +91,27 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void DropDiversity()
     {
-        if (!UseMouse)
+        if (DiversityManager.Instance.SelectedDiversitySet.Gamemode == Gamemode.Tetris)
+        {
+            // テトリスモード
+            //　落下間隔を調整
+            if (_tetorisNowPauseTime > 0)
+            {
+                _tetorisNowPauseTime -= Time.deltaTime;
+            }
+
+            if (_tetorisNowPauseTime <= 0)
+            {
+                // 一定時間が経過したら多様性を落とす
+                MainManager.Instance.DropDiversity(
+                    this.transform.position + _initialPositionAdj);
+
+                // 落下までの時間を再設定
+                _tetorisNowPauseTime = TetrisDropInterval;
+            }
+        }
+
+        else if (!UseMouse)
         {
             // キーボード操作
             if (Input.GetKeyDown(KeyCode.Space))
