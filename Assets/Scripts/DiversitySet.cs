@@ -12,4 +12,6 @@ public class DiversitySet : MonoBehaviour
     public Sprite SetImage;
     /// <summary>落下させるダイバーシティの大きさ(倍)</summary>
     public float DiversityScale = 1.0f;
+    /// <summary>適用されるゲームモード</summary>
+    public Gamemode Gamemode = Gamemode.Normal;
 }

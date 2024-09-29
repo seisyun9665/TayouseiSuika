@@ -47,3 +47,4 @@ MonoBehaviour:
   DiversitySetList:
   - {fileID: 5757931089190557025, guid: 230e38c41ab5f467c8298660336b6c18, type: 3}
   - {fileID: 5757931089190557025, guid: 7cb5667d7deda4cbeb01116130d5c7cd, type: 3}
+  - {fileID: 5757931089190557025, guid: 93513d50282ad408781a0a86269007c3, type: 3}
